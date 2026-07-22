@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio TKJ | Nazwa Salsabila</title>
+    <!-- FontAwesome Icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-color: #080710;
+            --card-bg: rgba(255, 255, 255, 0.05);
+            --primary-neon: #00f3ff;
+            --secondary-neon: #bc13fe;
+            --text-color: #ffffff;
+            --text-dim: #a0a0a0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            overflow-x: hidden;
+        }
+
+        /* Ambient Glow Background */
+        .glow-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .circle-1, .circle-2 {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(120px);
+            opacity: 0.4;
+            animation: float 8s infinite alternate ease-in-out;
+        }
+
+        .circle-1 {
+            width: 350px;
+            height: 350px;
+            background: var(--primary-neon);
+            top: -10%;
+            left: -10%;
+        }
+
+        .circle-2 {
+            width: 400px;
+            height: 400px;
+            background: var(--secondary-neon);
+            bottom: -10%;
+            right: -10%;
+            animation-delay: -4s;
+        }
+
+        @keyframes float {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(50px, 50px) scale(1.1); }
+        }
+
+        /* Navbar */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 8%;
+            background: rgba(8, 7, 16, 0.8);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(0, 243, 255, 0.1);
+        }
+
+        .logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-neon);
+            text-shadow: 0 0 10px var(--primary-neon);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-neon);
+            text-shadow: 0 0 8px var(--primary-neon);
+        }
+
+        /* Sections General */
+        section {
+            padding: 120px 8% 60px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .section-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.2rem;
+            text-align: center;
+            margin-bottom: 50px;
+            color: var(--text-color);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-neon), var(--secondary-neon));
+            margin: 10px auto 0;
+            box-shadow: 0 0 10px var(--primary-neon);
+        }
+
+        /* Hero Section */
+        .hero {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            gap: 50px;
+            flex-wrap: wrap;
+        }
+
+        .hero-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .hero-text h3 {
+            font-size: 1.5rem;
+            color: var(--primary-neon);
+            margin-bottom: 10px;
+        }
+
+        .hero-text h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3.2rem;
+            line-height: 1.2;
+            margin-bottom: 15px;
+            background: linear-gradient(90deg, #fff, var(--text-dim));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-text p {
+            color: var(--text-dim);
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            max-width: 500px;
+        }
+
+        /* Profile Picture Upload & Neon Effect */
+        .profile-container {
+            position: relative;
+            width: 280px;
+            height: 280px;
+            margin: 0 auto;
+        }
+
+        .profile-avatar {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--primary-neon);
+            box-shadow: 0 0 20px var(--primary-neon), inset 0 0 15px var(--primary-neon);
+            animation: pulse-glow 3s infinite alternate;
+        }
+
+        @keyframes pulse-glow {
+            0% { box-shadow: 0 0 15px var(--primary-neon), 0 0 30px var(--primary-neon); }
+            100% { box-shadow: 0 0 25px var(--secondary-neon), 0 0 50px var(--secondary-neon); }
+        }
+
+        .upload-btn-wrapper {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+        }
+
+        .btn-upload {
+            background: var(--secondary-neon);
+            color: #fff;
+            border: none;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.2rem;
+            box-shadow: 0 0 10px var(--secondary-neon);
+            transition: 0.3s;
+        }
+
+        .btn-upload:hover {
+            transform: scale(1.1);
+        }
+
+        #imageInput {
+            display: none;
+        }
+
+        /* Buttons */
+        .btn-primary {
+            display: inline-block;
+            padding: 12px 30px;
+            background: transparent;
+            color: var(--primary-neon);
+            border: 2px solid var(--primary-neon);
+            border-radius: 30px;
+            font-weight: 600;
+            text-decoration: none;
+            box-shadow: 0 0 10px var(--primary-neon);
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-neon);
+            color: var(--bg-color);
+            box-shadow: 0 0 25px var(--primary-neon);
+        }
+
+        /* Skills / TKJ Features Grid */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 15px;
+            backdrop-filter: blur(5px);
+            transition: 0.3s;
+            text-align: center;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary-neon);
+            box-shadow: 0 0 20px rgba(0, 243, 255, 0.2);
+        }
+
+        .card i {
+            font-size: 2.5rem;
+            color: var(--primary-neon);
+            margin-bottom: 15px;
+            text-shadow: 0 0 10px var(--primary-neon);
+        }
+
+        .card h3 {
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+
+        .card p {
+            color: var(--text-dim);
+            font-size: 0.9rem;
+        }
+
+        /* Contact Section & Social Links */
+        .contact-box {
+            background: var(--card-bg);
+            border: 1px solid rgba(0, 243, 255, 0.2);
+            padding: 40px;
+            border-radius: 20px;
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: center;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+        }
+
+        .contact-info a {
+            color: var(--primary-neon);
+            text-decoration: none;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .social-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--text-color);
+            font-size: 1.3rem;
+            text-decoration: none;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: 0.3s;
+        }
+
+        .social-btn:hover {
+            color: var(--bg-color);
+            background: var(--secondary-neon);
+            border-color: var(--secondary-neon);
+            box-shadow: 0 0 20px var(--secondary-neon);
+            transform: scale(1.1);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            color: var(--text-dim);
+            font-size: 0.85rem;
+        }
+
+        /* Responsif untuk HP */
+        @media (max-width: 768px) {
+            nav { padding: 15px 5%; }
+            .nav-links { display: none; } /* Bisa ditambahkan hamburger menu jika perlu */
+            .hero { text-align: center; justify-content: center; }
+            .hero-text h1 { font-size: 2.3rem; }
+            section { padding: 100px 5% 40px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Dynamic Neon Background -->
+    <div class="glow-bg">
+        <div class="circle-1"></div>
+        <div class="circle-2"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">&lt;Nazwa/TKJ&gt;</div>
+        <ul class="nav-links">
+            <li><a href="#home">Beranda</a></li>
+            <li><a href="#about">Tentang</a></li>
+            <li><a href="#skills">Keahlian</a></li>
+            <li><a href="#contact">Kontak</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero / Home Section -->
+    <section id="home">
+        <div class="hero">
+            <div class="hero-text">
+                <h3>Halo, Saya</h3>
+                <h1>NAZWA SALSABILA</h1>
+                <p>Siswa / Specialist Teknik Komputer & Jaringan (TKJ). Berfokus pada Infrastruktur Jaringan, Troubleshooting Hardware, dan Sistem Operasi Server.</p>
+                <a href="#contact" class="btn-primary">Hubungi Saya</a>
+            </div>
+
+            <!-- Custom Profile & Photo Uploader -->
+            <div class="profile-container">
+                <!-- Foto Default (bisa diubah secara permanen) -->
+                <img src="https://via.placeholder.com/300/080710/00f3ff?text=Upload+Foto" id="profileImage" class="profile-avatar" alt="Foto Profil Nazwa">
+                
+                <div class="upload-btn-wrapper" title="Ganti Foto Profil">
+                    <button class="btn-upload" onclick="document.getElementById('imageInput').click()">
+                        <i class="fa-solid fa-camera"></i>
+                    </button>
+                    <!-- Input tersembunyi untuk upload gambar -->
+                    <input type="file" id="imageInput" accept="image/*">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <h2 class="section-title">Tentang Jurusan TKJ</h2>
+        <div class="card" style="max-width: 800px; margin: 0 auto; text-align: left;">
+            <p style="font-size: 1.05rem; line-height: 1.8; color: #e0e0e0;">
+                <i class="fa-solid fa-quote-left" style="color: var(--primary-neon); font-size: 1.5rem; margin-right: 10px;"></i>
+                Teknik Komputer dan Jaringan (TKJ) adalah bidang keahlian yang mempelajari cara merakit komputer, menginstalasi jaringan lokal (LAN) maupun luas (WAN), mengonfigurasi perangkat komunikasi seperti Router & Switch, serta mengelola sistem keamanan dan server komputer.
+            </p>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <h2 class="section-title">Keahlian & Kompetensi</h2>
+        <div class="grid-container">
+            <div class="card">
+                <i class="fa-solid fa-network-wired"></i>
+                <h3>Jaringan Komputer</h3>
+                <p>Mampu membuat perkabelan UTP/STP, konfigurasi Mikrotik, IP Addressing, Subnetting, dan Routing.</p>
+            </div>
+            <div class="card">
+                <i class="fa-solid fa-server"></i>
+                <h3>Administration Server</h3>
+                <p>Konfigurasi Server Linux/Windows, Web Server, DHCP, DNS, serta File Server.</p>
+            </div>
+            <div class="card">
+                <i class="fa-solid fa-microchip"></i>
+                <h3>Hardware & Perakitan</h3>
+                <p>Merakit komponen PC, troubleshooting masalah teknis hardware, serta instalasi OS.</p>
+            </div>
+            <div class="card">
+                <i class="fa-solid fa-shield-halved"></i>
+                <h3>Keamanan Jaringan</h3>
+                <p>Memahami konsep dasar Firewall, VPN, dan manajemen proteksi data dari akses tak berizin.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2 class="section-title">Hubungi Saya</h2>
+        <div class="contact-box">
+            <div class="contact-info">
+                <p><i class="fa-solid fa-phone" style="color: var(--primary-neon);"></i> <strong>No. HP / WA:</strong> <a href="https://wa.me/6283136398008" target="_blank">083136398008</a></p>
+                <p><i class="fa-solid fa-envelope" style="color: var(--primary-neon);"></i> <strong>Email:</strong> <a href="mailto:nazwasabila555@gmail.com">nazwasabila555@gmail.com</a></p>
+            </div>
+
+            <!-- Social Media Neon Links -->
+            <div class="social-icons">
+                <a href="https://www.tiktok.com/@nzwasabila30" target="_blank" class="social-btn" title="TikTok">
+                    <i class="fa-brands fa-tiktok"></i>
+                </a>
+                <a href="https://www.instagram.com/nzwasabilla_?igsh=MXR0c3c5OGluc2V6NA%3D%3D&utm_source=qr" target="_blank" class="social-btn" title="Instagram">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+                <a href="https://www.facebook.com/share/1CutHfBA9h/?mibextid=wwXIfr" target="_blank" class="social-btn" title="Facebook">
+                    <i class="fa-brands fa-facebook-f"></i>
+                </a>
+                <a href="https://youtube.com/@nzwasabila?si=PO9aKSdhgJxiUiAn" target="_blank" class="social-btn" title="YouTube">
+                    <i class="fa-brands fa-youtube"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; Portofolio Nazwa Salsabila | Teknik Komputer & Jaringan.</p>
+    </footer>
+
+    <!-- JavaScript Fitur Simpan Foto Permanen -->
+    <script>
+        const imageInput = document.getElementById('imageInput');
+        const profileImage = document.getElementById('profileImage');
+
+        // Load foto tersimpan di browser saat halaman dimuat
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedImage = localStorage.getItem('user_profile_photo');
+            if (savedImage) {
+                profileImage.src = savedImage;
+            }
+        });
+
+        // Event listener saat user memilih file foto baru
+        imageInput.addEventListener('change', function() {
+            const file = this.files[0];
+            if (file) {
+                const reader = new FileReader();
+                
+                reader.onload = function(e) {
+                    const base64Image = e.target.result;
+                    // Tampilkan gambar baru
+                    profileImage.src = base64Image;
+                    // Simpan permanen ke LocalStorage browser
+                    localStorage.setItem('user_profile_photo', base64Image);
+                }
+
+                reader.readAsDataURL(file);
+            }
+        });
+    </script>
+</body>
+</html>
