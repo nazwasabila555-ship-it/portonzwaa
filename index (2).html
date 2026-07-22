@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio TKJ - Nazwa Salsabila</title>
+    <!-- FontAwesome untuk Icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- RESET & GLOBAL VARIABLES --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        :root {
+            --bg-color: #0d0f17;
+            --card-bg: #161b26;
+            --neon-blue: #00f3ff;
+            --neon-purple: #b026ff;
+            --text-color: #ffffff;
+            --text-secondary: #a0a5b5;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            overflow-x: hidden;
+        }
+
+        /* --- NAVBAR --- */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(13, 15, 23, 0.85);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0, 243, 255, 0.2);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #fff;
+            text-decoration: none;
+            text-shadow: 0 0 10px var(--neon-blue);
+        }
+
+        .logo span {
+            color: var(--neon-blue);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--neon-blue);
+            text-shadow: 0 0 8px var(--neon-blue);
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 120px 8% 50px;
+            gap: 40px;
+        }
+
+        .hero-text {
+            max-width: 600px;
+        }
+
+        .hero-text h3 {
+            font-size: 1.5rem;
+            color: var(--neon-blue);
+            text-shadow: 0 0 5px var(--neon-blue);
+            margin-bottom: 10px;
+        }
+
+        .hero-text h1 {
+            font-size: 3.2rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 15px;
+            background: linear-gradient(45deg, #fff, var(--neon-blue), var(--neon-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-text p {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        .btn-glow {
+            display: inline-block;
+            padding: 12px 30px;
+            color: #fff;
+            background: transparent;
+            border: 2px solid var(--neon-blue);
+            border-radius: 30px;
+            font-weight: 600;
+            text-decoration: none;
+            box-shadow: 0 0 15px var(--neon-blue);
+            transition: 0.4s;
+            animation: pulse 2s infinite;
+        }
+
+        .btn-glow:hover {
+            background: var(--neon-blue);
+            color: #000;
+            box-shadow: 0 0 30px var(--neon-blue);
+        }
+
+        /* --- FOTO PROFILE NEON --- */
+        .hero-img {
+            position: relative;
+            width: 320px;
+            height: 320px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .img-box {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            padding: 8px;
+            background: linear-gradient(45deg, var(--neon-blue), var(--neon-purple));
+            box-shadow: 0 0 25px var(--neon-blue), 0 0 50px var(--neon-purple);
+            animation: rotateGlow 6s linear infinite;
+        }
+
+        .img-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 4px solid var(--bg-color);
+        }
+
+        /* --- SKILLS / JURUSAN SECTION --- */
+        .section {
+            padding: 80px 8%;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .section-title span {
+            color: var(--neon-blue);
+            text-shadow: 0 0 10px var(--neon-blue);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 25px;
+        }
+
+        .skill-card {
+            background: var(--card-bg);
+            padding: 30px 20px;
+            border-radius: 15px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: 0.4s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-card i {
+            font-size: 2.5rem;
+            color: var(--neon-blue);
+            margin-bottom: 15px;
+            text-shadow: 0 0 10px var(--neon-blue);
+        }
+
+        .skill-card h3 {
+            margin-bottom: 10px;
+        }
+
+        .skill-card p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--neon-purple);
+            box-shadow: 0 0 20px rgba(176, 38, 255, 0.4);
+        }
+
+        /* --- CONTACT & SOSMED SECTION --- */
+        .contact-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 20px;
+            border: 1px solid rgba(0, 243, 255, 0.2);
+            box-shadow: 0 0 20px rgba(0, 243, 255, 0.1);
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 1.1rem;
+        }
+
+        .info-item i {
+            font-size: 1.5rem;
+            color: var(--neon-blue);
+            text-shadow: 0 0 8px var(--neon-blue);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .social-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: #0d0f17;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.3rem;
+            border: 1px solid var(--neon-blue);
+            box-shadow: 0 0 10px rgba(0, 243, 255, 0.3);
+            transition: 0.3s;
+        }
+
+        .social-btn:hover {
+            background: var(--neon-blue);
+            color: #000;
+            box-shadow: 0 0 20px var(--neon-blue);
+            transform: scale(1.1);
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            text-align: center;
+            padding: 25px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* --- ANIMATIONS --- */
+        @keyframes rotateGlow {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 0 15px var(--neon-blue); }
+            50% { box-shadow: 0 0 25px var(--neon-purple); }
+        }
+
+        /* --- RESPONSIVE DESIGN --- */
+        @media (max-width: 768px) {
+            .hero {
+                flex-direction: column-reverse;
+                text-align: center;
+                padding-top: 140px;
+            }
+
+            .hero-img {
+                width: 250px;
+                height: 250px;
+            }
+
+            .hero-text h1 {
+                font-size: 2.3rem;
+            }
+
+            .nav-links {
+                display: none; /* Bisa dikembangkan jadi burger menu */
+            }
+
+            .contact-container {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <header>
+        <a href="#" class="logo">Nazwa<span>.TKJ</span></a>
+        <ul class="nav-links">
+            <li><a href="#home">Beranda</a></li>
+            <li><a href="#about">Tentang</a></li>
+            <li><a href="#skills">Keahlian</a></li>
+            <li><a href="#contact">Kontak</a></li>
+        </ul>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero" id="home">
+        <div class="hero-text">
+            <h3>Halo, Saya</h3>
+            <h1>Nazwa Salsabila</h1>
+            <p>Siswa / Profesional di bidang <b>Teknik Komputer dan Jaringan (TKJ)</b>. Berfokus pada konfigurasi jaringan, manajemen server, perakitan komputer, dan keamanan siber.</p>
+            <a href="#contact" class="btn-glow"><i class="fa-solid fa-paper-plane"></i> Hubungi Saya</a>
+        </div>
+
+        <div class="hero-img">
+            <div class="img-box">
+                <!-- Gambar Avatar/Profil TKJ (Bisa diganti dengan foto asli Anda) -->
+                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=600&auto=format&fit=crop" alt="Foto Nazwa Salsabila">
+            </div>
+        </div>
+    </section>
+
+    <!-- TENTANG JURUSAN TKJ -->
+    <section class="section" id="about">
+        <h2 class="section-title">Tentang <span>TKJ</span></h2>
+        <div style="background: var(--card-bg); padding: 30px; border-radius: 15px; border-left: 4px solid var(--neon-blue); max-width: 900px; margin: 0 auto; color: var(--text-secondary); line-height: 1.8;">
+            <p><b>Teknik Komputer dan Jaringan (TKJ)</b> adalah bidang keahlian yang mempelajari tentang cara merakit komputer, menginstal program sistem operasi, serta membangun dan mengonfigurasi jaringan komputer lokal (LAN) maupun luas (WAN). Saya memiliki passion mendalam dalam memahami bagaimana lalu lintas data beroperasi dan mengamankan infrastruktur jaringan.</p>
+        </div>
+    </section>
+
+    <!-- KEAHLIAN / SKILLS -->
+    <section class="section" id="skills">
+        <h2 class="section-title">Keahlian <span>Utama</span></h2>
+        <div class="skills-grid">
+            <div class="skill-card">
+                <i class="fa-solid fa-network-wired"></i>
+                <h3>Computer Networking</h3>
+                <p>Konfigurasi MikroTik, Cisco Router, Switch, IP Addressing, Vlan, dan Routing.</p>
+            </div>
+            <div class="skill-card">
+                <i class="fa-solid fa-server"></i>
+                <h3>Server Administration</h3>
+                <p>Pengelolaan OS Server (Linux Debian/Ubuntu), Web Server, DHCP, dan DNS Server.</p>
+            </div>
+            <div class="skill-card">
+                <i class="fa-solid fa-desktop"></i>
+                <h3>Hardware & Troubleshooting</h3>
+                <p>Perakitan PC, perawatan perangkat keras, dan diagnosa kerusakan komputer.</p>
+            </div>
+            <div class="skill-card">
+                <i class="fa-solid fa-shield-halved"></i>
+                <h3>Network Security</h3>
+                <p>Dasar-dasar keamanan jaringan, Firewall, monitoring bandwidth, dan proteksi jaringan.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- KONTAK & SOSMED -->
+    <section class="section" id="contact">
+        <h2 class="section-title">Hubungi <span>Saya</span></h2>
+        <div class="contact-container">
+            <div class="contact-info">
+                <div class="info-item">
+                    <i class="fa-solid fa-user"></i>
+                    <span>Nazwa Salsabila</span>
+                </div>
+                <div class="info-item">
+                    <i class="fa-solid fa-phone"></i>
+                    <span>083136398008</span>
+                </div>
+                <div class="info-item">
+                    <i class="fa-solid fa-envelope"></i>
+                    <span>nazwasabila555@gmail.com</span>
+                </div>
+            </div>
+
+            <!-- Media Sosial -->
+            <div class="social-links">
+                <a href="https://www.tiktok.com/@nzwasabila30" target="_blank" class="social-btn" title="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+                <a href="https://www.instagram.com/nzwasabilla_?igsh=MXR0c3c5OGluc2V6NA%3D%3D&utm_source=qr" target="_blank" class="social-btn" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://www.facebook.com/share/1CutHfBA9h/?mibextid=wwXIfr" target="_blank" class="social-btn" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="https://youtube.com/@nzwasabila?si=PO9aKSdhgJxiUiAn" target="_blank" class="social-btn" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2026 Nazwa Salsabila. All Rights Reserved. Built for TKJ Portfolio.</p>
+    </footer>
+
+</body>
+</html>
